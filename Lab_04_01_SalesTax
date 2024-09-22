@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+class SalesTaxCalculator {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the price of the purchase: ");
+        double price = input.nextDouble();
+
+        final double SALES_TAX_RATE = 0.05;
+        double salesTax = price * SALES_TAX_RATE;
+
+        System.out.println("Price of the purchase: $" + price);
+        System.out.println("Sales tax (5%): $" + salesTax);
+    }
+}
