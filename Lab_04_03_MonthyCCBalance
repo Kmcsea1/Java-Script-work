@@ -1,0 +1,22 @@
+import java.text.DecimalFormat;
+
+class CreditCardInterest {
+    public static void main(String[] args) {
+        // Initialize balance and interest rate
+        double balance = 5000.00;
+        double annualInterestRate = 0.17;
+        double monthlyInterestRate = annualInterestRate / 12;
+
+        // Calculate interest after one month and two months
+        double interestOneMonth = balance * monthlyInterestRate;
+        double interestTwoMonths = (balance + interestOneMonth) * monthlyInterestRate;
+
+        // Format the output to two decimal places
+        DecimalFormat df = new DecimalFormat("#.00");
+
+        // Display the interest due after one and two months
+        System.out.println("Initial balance: $" + df.format(balance));
+        System.out.println("Interest due after one month: $" + df.format(interestOneMonth));
+        System.out.println("Interest due after two months: $" + df.format(interestTwoMonths + interestOneMonth));
+    }
+}
