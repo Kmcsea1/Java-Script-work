@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+class PartyAffiliation {
+    public static void main(String[] args) {
+        // Create a Scanner object to read input from the console
+        Scanner in = new Scanner(System.in);
+
+        // Declare variable for the user's choice
+        String partyChoice = "";
+
+        // Display the menu
+        System.out.println("Please choose your party affiliation:");
+        System.out.println("D - Democrat");
+        System.out.println("R - Republican");
+        System.out.println("I - Independent");
+
+        // Prompt the user to enter their choice
+        System.out.print("Enter your choice (D, R, I): ");
+        partyChoice = in.nextLine(); // Read user input
+
+        // Check the user's choice using a cascaded if structure
+        if (partyChoice.equalsIgnoreCase("D")) {
+            System.out.println("You get a Democratic Donkey.");
+        } else if (partyChoice.equalsIgnoreCase("R")) {
+            System.out.println("You get a Republican Elephant.");
+        } else if (partyChoice.equalsIgnoreCase("I")) {
+            System.out.println("You get an Independent Person.");
+        } else {
+            System.out.println("You get Other.");
+        }
+
+        // Close the Scanner
+        in.close();
+    }
+}
