@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+class ShipCostCalculator {
+    public static void main(String[] args) {
+        // Create a Scanner object to read input from the console
+        Scanner in = new Scanner(System.in);
+
+        // Declare variables
+        double itemPrice = 0;
+        double shippingCost = 0;
+        double totalPrice = 0;
+
+        // Prompt the user to enter the item price
+        System.out.print("Enter the price of the item: ");
+
+        // Check if the input is a valid double
+        if (in.hasNextDouble()) {
+            // Read in the item price
+            itemPrice = in.nextDouble();
+            in.nextLine(); // Clear the buffer
+
+            // If the item price is $100 or more, shipping is free
+            if (itemPrice >= 100) {
+                shippingCost = 0;
+            } else {
+                // Otherwise, calculate shipping cost as 2% of the item price
+                shippingCost = itemPrice * 0.02;
+            }
+
+            // Calculate the total price
+            totalPrice = itemPrice + shippingCost;
+
+            // Output the shipping cost and total price
+            System.out.printf("Shipping cost: $%.2f\n", shippingCost);
+            System.out.printf("Total price: $%.2f\n", totalPrice);
+
+        } else {
+            // Invalid input handling
+            String trash = in.nextLine(); // Store the invalid input
+            System.out.println("Invalid input: " + trash);
+            System.out.println("Run the program again and enter a valid number.");
+        }
+
+        // Close the Scanner
+        in.close();
+    }
+}
