@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+class BirthMonth {
+    public static void main(String[] args) {
+        // Create a Scanner object to read input from the console
+        Scanner in = new Scanner(System.in);
+
+        // Declare variable for the birth month
+        int birthMonth = 0;
+
+        // Prompt the user to enter their birth month
+        System.out.print("Enter your birth month (1-12): ");
+
+        // Check if the input is a valid integer
+        if (in.hasNextInt()) {
+            birthMonth = in.nextInt();
+            in.nextLine(); // Clear the buffer
+
+            // Check if the birth month is in the valid range (1-12)
+            if (birthMonth >= 1 && birthMonth <= 12) {
+                System.out.println("Your birth month is: " + birthMonth);
+            } else {
+                System.out.println("You entered an incorrect month value: " + birthMonth);
+            }
+
+        } else {
+            // Invalid input handling
+            String trash = in.nextLine(); // Store the invalid input
+            System.out.println("Invalid input: " + trash);
+            System.out.println("Run the program again and enter a valid number.");
+        }
+
+        // Close the Scanner
+        in.close();
+    }
+}
