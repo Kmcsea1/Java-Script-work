@@ -1,0 +1,253 @@
+import java.util.Scanner; // Import Scanner class for input
+import java.util.InputMismatchException; // Import exception for input mismatch
+
+class CtoFConverter { // Default access class
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in); // Create Scanner object
+        double celsius = 0; // Variable to store Celsius input
+        boolean validInput; // Variable to track if input is valid
+
+        do {
+            validInput = true; // Assume input is valid
+            System.out.print("Enter temperature in Celsius: ");
+
+            try {
+                celsius = in.nextDouble(); // Attempt to read a double input
+                in.nextLine(); // Clear the newline character from the buffer
+
+                // Output freezing and boiling points
+                if (celsius == 0) {
+                    System.out.println("You entered the freezing point of water.");
+                } else if (celsius == 100) {
+                    System.out.println("You entered the boiling point of water.");
+                }
+
+                double fahrenheit = (celsius * 9 / 5) + 32; // Convert Celsius to Fahrenheit
+                System.out.printf("Equivalent temperature in Fahrenheit: %.2f%n", fahrenheit);
+
+            } catch (InputMismatchException e) {
+                // Handle invalid input
+                System.out.println("Invalid input. Please enter a valid numeric temperature.");
+                in.nextLine(); // Clear the invalid input
+                validInput = false; // Set validInput to false
+            
+        } while (!validInput); // Repeat until valid input is received
+
+        in.close(); // Close the Scanner
+
+
+import java.util.Scanner; // Import Scanner class for input
+import java.util.InputMismatchException; // Import exception for input mismatch
+
+class FuelCosts { // Default access class
+
+    void calculateFuelCosts() { // Method to calculate fuel costs
+        Scanner in = new Scanner(System.in); // Create Scanner object
+
+        // Variables for user input
+        double gallons = 0;
+        double mpg = 0;
+        double pricePerGallon = 0;
+
+        // Get number of gallons in the tank
+        boolean validInput;
+        do {
+            validInput = true; // Assume input is valid
+            System.out.print("Enter the number of gallons of gas in the tank: ");
+            try {
+                gallons = in.nextDouble(); // Attempt to read a double input
+                in.nextLine(); // Clear the newline character from the buffer
+                if (gallons < 0) { // Validate input
+                    System.out.println("Please enter a non-negative value for gallons.");
+                    validInput = false;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a valid number.");
+                in.nextLine(); // Clear the invalid input
+                validInput = false; // Set validInput to false
+            }
+        } while (!validInput); // Repeat until valid input is received
+
+        // Get fuel efficiency in miles per gallon
+        do {
+            validInput = true; // Assume input is valid
+            System.out.print("Enter the fuel efficiency in miles per gallon: ");
+            try {
+                mpg = in.nextDouble(); // Attempt to read a double input
+                in.nextLine(); // Clear the newline character from the buffer
+                if (mpg <= 0) { // Validate input
+                    System.out.println("Please enter a positive value for miles per gallon.");
+                    validInput = false;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a valid number.");
+                in.nextLine(); // Clear the invalid input
+                validInput = false; // Set validInput to false
+            }
+        } while (!validInput); // Repeat until valid input is received
+
+        // Get price of gas per gallon
+        do {
+            validInput = true; // Assume input is valid
+            System.out.print("Enter the price of gas per gallon: ");
+            try {
+                pricePerGallon = in.nextDouble(); // Attempt to read a double input
+                in.nextLine(); // Clear the newline character from the buffer
+                if (pricePerGallon < 0) { // Validate input
+                    System.out.println("Please enter a non-negative value for price per gallon.");
+                    validInput = false;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a valid number.");
+                in.nextLine(); // Clear the invalid input
+                validInput = false; // Set validInput to false
+            }
+        } while (!validInput); // Repeat until valid input is received
+
+        // Calculate cost to drive 100 miles and distance with a full tank
+        double costToDrive100Miles = (100.0 / mpg) * pricePerGallon;
+        double distanceWithFullTank = gallons * mpg;
+
+        // Output results
+        System.out.printf("The cost to drive 100 miles: $%.2f%n", costToDrive100Miles);
+        System.out.printf("The car can go %.2f miles with a full tank of gas.%n", distanceWithFullTank);
+
+        in.close(); // Close the Scanner
+    }
+}
+
+// Runner class to execute the FuelCosts calculations
+class RunFuelCosts {
+    public static void main(String[] args) {
+        FuelCosts fuelCosts = new FuelCosts(); // Create an instance of FuelCosts
+        fuelCosts.calculateFuelCosts(); // Call the method to perform calculations
+    }
+}
+
+
+import java.util.Scanner; // Import Scanner class for input
+import java.util.Random; // Import Random class for generating random numbers
+import java.util.InputMismatchException; // Import exception for input mismatch
+
+class HighOrLow { // Default access class
+
+    void playGame() { // Method to play the High or Low game
+        Scanner in = new Scanner(System.in); // Create Scanner object
+        Random rand = new Random(); // Create Random object
+
+        int randomNumber = rand.nextInt(10) + 1; // Generate random number between 1 and 10
+        int guess = 0; // Variable to store user's guess
+        boolean validInput;
+
+        // Get user guess with input validation
+        do {
+            validInput = true; // Assume input is valid
+            System.out.print("Guess a number between 1 and 10: ");
+            try {
+                guess = in.nextInt(); // Attempt to read an integer input
+                in.nextLine(); // Clear the newline character from the buffer
+
+                if (guess < 1 || guess > 10) { // Validate input range
+                    System.out.println("Please enter a number between 1 and 10.");
+                    validInput = false;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a valid integer.");
+                in.nextLine(); // Clear the invalid input
+                validInput = false; // Set validInput to false
+            }
+        } while (!validInput); // Repeat until valid input is received
+
+        // Display the random number and user's guess result
+        System.out.println("The random number was: " + randomNumber);
+        if (guess < randomNumber) {
+            System.out.println("Your guess is too low.");
+        } else if (guess > randomNumber) {
+            System.out.println("Your guess is too high.");
+        } else {
+            System.out.println("Congratulations! You guessed it right!");
+        }
+
+        in.close(); // Close the Scanner
+    }
+}
+
+// Runner class to execute the HighOrLow game
+class RunHighOrLow {
+    public static void main(String[] args) {
+        HighOrLow highOrLow = new HighOrLow(); // Create an instance of HighOrLow
+        highOrLow.playGame(); // Call the method to play the game
+    }
+}
+
+import java.util.Scanner; // Import Scanner class for input
+import java.util.InputMismatchException; // Import exception for input mismatch
+
+class RectangleInfo { // Default access class
+
+    void calculateRectangleInfo() { // Method to calculate rectangle info
+        Scanner in = new Scanner(System.in); // Create Scanner object
+        
+        // Variables for user input
+        double width = 0;
+        double height = 0;
+
+        // Get width of the rectangle
+        boolean validInput;
+        do {
+            validInput = true; // Assume input is valid
+            System.out.print("Enter the width of the rectangle: ");
+            try {
+                width = in.nextDouble(); // Attempt to read a double input
+                in.nextLine(); // Clear the newline character from the buffer
+                if (width <= 0) { // Validate input
+                    System.out.println("Please enter a positive value for width.");
+                    validInput = false;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a valid number.");
+                in.nextLine(); // Clear the invalid input
+                validInput = false; // Set validInput to false
+            }
+        } while (!validInput); // Repeat until valid input is received
+
+        // Get height of the rectangle
+        do {
+            validInput = true; // Assume input is valid
+            System.out.print("Enter the height of the rectangle: ");
+            try {
+                height = in.nextDouble(); // Attempt to read a double input
+                in.nextLine(); // Clear the newline character from the buffer
+                if (height <= 0) { // Validate input
+                    System.out.println("Please enter a positive value for height.");
+                    validInput = false;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a valid number.");
+                in.nextLine(); // Clear the invalid input
+                validInput = false; // Set validInput to false
+            }
+        } while (!validInput); // Repeat until valid input is received
+
+        // Calculate area, perimeter, and diagonal
+        double area = width * height; // Area calculation
+        double perimeter = 2 * (width + height); // Perimeter calculation
+        double diagonal = Math.sqrt((width * width) + (height * height)); // Diagonal calculation using Pythagorean theorem
+
+        // Output results
+        System.out.printf("The area of the rectangle: %.2f%n", area);
+        System.out.printf("The perimeter of the rectangle: %.2f%n", perimeter);
+        System.out.printf("The length of the diagonal: %.2f%n", diagonal);
+
+        in.close(); // Close the Scanner
+    }
+}
+
+// Runner class to execute the RectangleInfo calculations
+class RunRectangleInfo {
+    public static void main(String[] args) {
+        RectangleInfo rectangleInfo = new RectangleInfo(); // Create an instance of RectangleInfo
+        rectangleInfo.calculateRectangleInfo(); // Call the method to perform calculations
+    }
+}
